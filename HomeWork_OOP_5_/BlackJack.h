@@ -1,9 +1,3 @@
-#pragma once
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
 class Card
 {
 public:
@@ -112,6 +106,6 @@ public:
 
 	void Bust() const
 	{
-		cout << m_Name << " ïåðåáîð.\n";
+		cout << m_Name << " перебор.\n";
 	}
 };
