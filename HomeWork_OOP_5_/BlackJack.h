@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <vector>
 
@@ -9,7 +10,7 @@ public:
 	enum rank { ACE = 1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING };
 	enum suit { CLUBS, DIAMONDS, HEARTS, SPADES };
 
-	Card(rank r = ACE, suit s, bool ifu = true) : m_Rank(r), m_Suit(s), m_IsFaceUp(ifu) { }
+	Card(suit s, bool ifu = true, rank r = ACE) : m_Rank(r), m_Suit(s), m_IsFaceUp(ifu) { }
 
 	int GetValue() const
 	{
@@ -28,7 +29,7 @@ public:
 		m_IsFaceUp = !m_IsFaceUp;
 	}
 
-	friend std::ostream& operator<<(std::ostream& s, const Card& aCard);
+	friend ostream& operator<<(ostream& s, const Card& aCard);
 
 private:
 	rank m_Rank;
@@ -56,7 +57,7 @@ public:
 
 	void Clear()
 	{
-		std::vector<Card*>::iterator iter = m_Cards.begin();
+		vector<Card*>::iterator iter = m_Cards.begin();
 		for (iter = m_Cards.begin(); iter != m_Cards.end(); ++iter)
 		{
 			delete* iter;
@@ -72,7 +73,7 @@ public:
 			return 0;
 
 		int total = 0;
-		std::vector<Card*>::const_iterator iter;
+		vector<Card*>::const_iterator iter;
 
 		for (iter = m_Cards.begin(); iter != m_Cards.end(); ++iter)
 			total += (*iter)->GetValue();
@@ -88,7 +89,7 @@ public:
 	}
 
 protected:
-	std::vector<Card*> m_Cards;
+	vector<Card*> m_Cards;
 };
 
 class GenericPlayer : public Hand
@@ -111,6 +112,6 @@ public:
 
 	void Bust() const
 	{
-		cout << m_Name << " ïåðåáîð.\n";
+		cout << m_Name << " Ã¯Ã¥Ã°Ã¥Ã¡Ã®Ã°.\n";
 	}
 };
